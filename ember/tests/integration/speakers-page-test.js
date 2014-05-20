@@ -27,7 +27,7 @@ module('Integration - Speaker Page', {
 
       this.get('/api/speakers/:id', function(request) {
         var speaker = speakers.find(function(speaker) {
-          if (speaker.id === parseInt(request.params.id)) {
+          if (speaker.id === parseInt(request.params.id, 10)) {
             return speaker;
           }
         });
@@ -35,6 +35,7 @@ module('Integration - Speaker Page', {
         return [200, {"Content-Type": "application/json"}, JSON.stringify({speaker: speaker})];
       });
     });
+
   },
   teardown: function() {
     Ember.run(App, 'destroy');
@@ -61,12 +62,12 @@ test('Should list all speakers', function() {
 test('Should be able to navigate to a speaker page', function() {
   visit('/speakers').then(function() {
     click('a:contains("Bugs Bunny")').then(function() {
-      equal(find('h4').text(), "Bugs Bunny");
+      equal(find('h4').text(), 'Bugs Bunny');
     });
   });
 });
 
-test('Should be able to visit a speaker page', function() {
+test('Should be able visit a speaker page', function() {
   visit('/speakers/1').then(function() {
     equal(find('h4').text(), 'Bugs Bunny');
   });

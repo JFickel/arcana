@@ -1,7 +1,7 @@
 /* global require */
+var Router = require('arcana/router')['default'];
 
 var Application = require('arcana/app')['default'];
-var Router = require('arcana/router')['default'];
 
 export default function startApp(attrs) {
   var App;

@@ -11,16 +11,8 @@ module('Integration - Landing Page', {
   }
 });
 
-test('Should welcome me to muh app', function() {
+test('Should welcome me to Boston Ember', function() {
   visit('/').then(function() {
-    equal(find('h2#title').text(), 'Welcome to Test App');
-  });
-});
-
-test('Should allow navigating back to the root path from another page', function() {
-  visit('/about').then(function() {
-    click('a:contains("Home")').then(function() {
-      notEqual(find('h3').text(), 'About');
-    });
+    equal(find('h2#title').text(), 'Welcome to Boston Ember');
   });
 });
